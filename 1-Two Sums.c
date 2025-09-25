@@ -13,12 +13,12 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     if (!resArray) return NULL; // malloc-Fehler abfangen
 
     printf("Debugg: \n");
-    for (int i = 0; i < numsSize; i++) {
+    for (int i = 0; i < numsSize - 1; i++) {
         for (int j = i + 1; j < numsSize; j++) {
             printf("%d[Element n:%d] + %d[Element n:%d] = %d\n", nums[i], i+1, nums[j], j+1, nums[i] + nums[j]);
             if (*(nums + i) + *(nums + j) == target) {
-                *(resArray) = *(nums + i);
-                *(resArray + 1) = *(nums + j);
+                *(resArray) = i;
+                *(resArray + 1) = j;
                 return resArray;
             }
         }
