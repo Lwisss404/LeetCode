@@ -3,7 +3,7 @@
 
 void fillArray(int *nums, int numsSize) {
     for (int i = 0; i < numsSize; i++) {
-        *(nums + i) = 1 + (rand() % 100);
+        *(nums + i) = 1 + (rand() % 10);
     }
 }
 
@@ -15,7 +15,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
     printf("Debugg: \n");
     for (int i = 0; i < numsSize; i++) {
         for (int j = i + 1; j < numsSize; j++) {
-            printf("%d[Element n° %d] + %d[Element n° %d] = %d", nums[i], i+1, nums[j], j+1, nums[i] + nums[j]);
+            printf("%d[Element n:%d] + %d[Element n:%d] = %d\n", nums[i], i+1, nums[j], j+1, nums[i] + nums[j]);
             if (*(nums + i) + *(nums + j) == target) {
                 *(resArray) = *(nums + i);
                 *(resArray + 1) = *(nums + j);
@@ -30,7 +30,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
 }
 
 int main() {
-    int numsSize = 5 + (rand() % (20 - 5 + 1));
+    int numsSize = 5 + (rand() % (10 - 5 + 1));
     int* nums = malloc(numsSize * sizeof(int));
     int* returnSize = malloc(sizeof(int));
     fillArray(nums, numsSize);
