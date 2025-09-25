@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 void fillArray(int *nums, int numsSize) {
     for (int i = 0; i < numsSize; i++) {
