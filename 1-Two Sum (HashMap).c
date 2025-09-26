@@ -90,15 +90,17 @@ int* twoSums(int* nums, int numsSize, int target, int* returnSize) {
 int main() {
     
     int numsSize = 5 + (rand() % (10 - 5 + 1));
+    int target = 5 + (rand() % (15 - 5 + 1));
     int* nums = malloc(numsSize * sizeof(int));
     if (!nums) return 0;
     int* returnSize = malloc(sizeof(int));
     if (!returnSize) return 0;
     
     fillArray(nums, numsSize);
+    printf("Target is : %d", target);
     displayArray(nums, numsSize);
 
-    int* resArray = twoSums(nums, numsSize, 5 + (rand() % (15 - 5 + 1)), returnSize);
+    int* resArray = twoSums(nums, numsSize, target, returnSize);
     if (resArray) {
         printf("[%d, %d]\n", resArray[0], resArray[1]);
     } else {
