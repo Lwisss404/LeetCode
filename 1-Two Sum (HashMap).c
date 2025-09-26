@@ -22,7 +22,7 @@ void displayArray(int *nums, int numsSize) {
     for (i = 0; i < numsSize - 2; i++) {
         printf("%d, ", *(nums + i));
     }
-    printf("%d]", *(nums + i + 1));
+    printf("%d]\n", *(nums + i + 1));
 }
 
 int hash(int key) {
