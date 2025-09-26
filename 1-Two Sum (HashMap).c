@@ -16,6 +16,15 @@ void fillArray(int *nums, int numsSize) {
     }
 }
 
+void displayArray(int *nums, int numsSize) {
+    printf("[");
+    int i;
+    for (i = 0; i < numsSize - 2; i++) {
+        printf("%d, ", *(nums + i));
+    }
+    printf("%d]", *(nums + i + 1));
+}
+
 int hash(int key) {
     if (key < 0) key = -key;
     return key % HASH_SIZE;
@@ -87,6 +96,7 @@ int main() {
     if (!returnSize) return 0;
     
     fillArray(nums, numsSize);
+    displayArray(nums, numsSize);
 
     int* resArray = twoSums(nums, numsSize, 5 + (rand() % (15 - 5 + 1)), returnSize);
     if (resArray) {
