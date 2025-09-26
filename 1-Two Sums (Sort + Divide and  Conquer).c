@@ -48,6 +48,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
         pairArray[i].index = i;
     }
 
+    free(nums);
     qsort(pairArray, numsSize, sizeof(Pair), comparePairs);
 
     for (int i = 0; i < numsSize; i++) {
@@ -74,9 +75,7 @@ int main() {
     displayArray(nums, numsSize);
     int* resArray = twoSum(nums, numsSize, 9, returnSize);
     if (!resArray) return 0;
-    displayArray(nums, numsSize);
     printf("[%d, %d]", resArray[0], resArray[1]);
-    free(nums);
     free(returnSize);
     free(resArray);
     return 0;
