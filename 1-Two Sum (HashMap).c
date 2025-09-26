@@ -97,7 +97,7 @@ int main() {
     if (!returnSize) return 0;
     
     fillArray(nums, numsSize);
-    printf("Target is : %d", target);
+    printf("Target is : %d\n", target);
     displayArray(nums, numsSize);
 
     int* resArray = twoSums(nums, numsSize, target, returnSize);
