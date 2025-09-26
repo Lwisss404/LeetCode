@@ -6,7 +6,7 @@
 typedef struct Hashnode {
     int key;
     int index;
-    Hashnode* next;
+    struct Hashnode* next;
 } Hashnode;
 
 
