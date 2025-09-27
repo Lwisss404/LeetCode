@@ -40,7 +40,6 @@ int main() {
     char s[10000];
     printf("Give a String: ");
     scanf("%9999s", s);
-    //char* longPal = malloc(sizeof(char));
     char *longPal = longestPalindrome(s);
     printf("%s", longPal);
     free(longPal);
