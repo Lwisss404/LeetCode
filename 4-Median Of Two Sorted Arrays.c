@@ -79,5 +79,5 @@ int main() {
 
     free(nums1);
     free(nums2);
-
+    return 0;
 }
