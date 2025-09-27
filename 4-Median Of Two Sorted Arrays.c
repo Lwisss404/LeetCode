@@ -5,14 +5,9 @@ int cmp (const void* x, const void* y) {
     return *(int *)x - *(int *)y;
 }
 
-int max (int x, int y) {
-    if (x >= y) return x;
-    else return y;
-}
-
 void fillArray (int* nums, int numsSize) {
     for (int i = 0; i < numsSize; i++) {
-        *(nums + i) = 0 + (rand() % (100 - 0 + 1));
+        *(nums + i) = 1 + (rand() % (10 - 1 + 1));
     }
 }
 
@@ -30,24 +25,29 @@ double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Si
     int *mergedNums = malloc(mergedNumsSize * sizeof(int));
     if (!mergedNums) return -1;
 
-    int j = 0;
+    int i = 0, j = 0, k = 0;
 
-    for (int i = 0; i < max(nums1Size, nums2Size); i++) {
-        if (i < nums1Size) {
-            *(mergedNums + j) = *(nums1 + i);
+    //Adding numbers in order to the new list until one array is empty
+    while (i < nums1Size && j < nums2Size) {
+        if (*(nums1 + i) <= *(nums2 + j)) {
+            *(mergedNums + k) = *(nums1 + i);
+            i++;
+        } else {
+            *(mergedNums + k) = *(nums2 + j);
             j++;
         }
-        if (i < nums2Size) {
-            *(mergedNums + j) = *(nums2 + i);
-            j++;
-        }
+        k++;
     }
+
+    //cheching which array still contains numbers and adding then in order
+    while (i < nums1Size) mergedNums[k++] = nums1[i++];
+    while (j < nums2Size) mergedNums[k++] = nums2[j++];
 
     double median;
     if (mergedNumsSize % 2 == 0) {
-        median = (*(mergedNums + (mergedNumsSize / 2)) + *(mergedNums + (mergedNumsSize / 2) - 1)) / 2;
+        median = ((double)*(mergedNums + (mergedNumsSize / 2)) + (double)*(mergedNums + (mergedNumsSize / 2) - 1)) / 2;
     } else {
-        median =  *(mergedNums + (mergedNumsSize / 2));
+        median =  (double)*(mergedNums + (mergedNumsSize / 2));
     }
 
     displayArray(mergedNums, mergedNumsSize);
