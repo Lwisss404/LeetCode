@@ -40,5 +40,5 @@ int main() {
     printf("Give a String: ");
     scanf("%9999s", s);
     printf("%d", lengthOfLongestSubstring(s));
-    
+    return 0;
 }
