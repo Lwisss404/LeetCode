@@ -15,6 +15,7 @@ int isPalindrome(char* s, int start, int end) {
 
 char* longestPalindrome(char* s) {
     int length = strlen(s);
+    if (length == 0) return "\0";
     int start = 0, end = 0;
     int i, j;
 
