@@ -3,7 +3,7 @@
 #include <string.h>
 
 char* convert(char* s, int numRows) {
-    if (numRows == 1 || strlen(s) <= 1) { return s; }
+    if (numRows == 1 || strlen(s) <= 1) { return strdup(s); }
 
     //determining the number of columns
     int lengthS = strlen(s);
@@ -11,24 +11,20 @@ char* convert(char* s, int numRows) {
     int nbrOfFullCycles = lengthS / cycleLength;
     int nbrOfRemChars = lengthS % cycleLength;
     
-    int remCols;
-    if (nbrOfRemChars == 0) {
-        remCols = 0;
-    } else if (nbrOfRemChars <= numRows) {
-        remCols = 1;
-    } else {
-        remCols = nbrOfRemChars - numRows;
+    int remCols = 0;
+    if (nbrOfRemChars > 0) {
+        remCols += (nbrOfRemChars < numRows) ? 1 : 1 + nbrOfRemChars - numRows;
     }
+
     int numCols = (numRows - 1) * nbrOfFullCycles + remCols;
 
     char* encString = malloc((lengthS + 1) * sizeof(char));
     if (!encString) { return NULL; }
     encString[lengthS] = '\0';
 
+    //filling for illustration purposes
     char **matrix = (char **)malloc(numRows * sizeof(char *));
     if (!matrix) { return NULL; }
-
-    //filling for illustration purposes
     for (int i = 0; i < numRows; i++) {
         *(matrix + i) = (char *)malloc(numCols * sizeof(char));
         if (!(*(matrix + i))) { return NULL; }
@@ -37,23 +33,19 @@ char* convert(char* s, int numRows) {
         }
     }
 
-    int i = 0, j = 0, idx = 0; // i is columns, j is rows and idx is the index in the original string
-    //filling the zigzag pattern (columns first)
-    for (i = 0;  i < numCols; i += numRows - 1) {
-        for (j = 0; j < numRows; j++) {
-            matrix[j][i] = s[idx++];
-        }
-        idx += cycleLength - numRows;
-    }
-
-    //filling the zigzag pattern (diagonal going up)
-    idx = numRows;
-    for (i = 1; i < numCols; i++) {
-        for (j = numRows - 2; j > 0; j--) {
-            matrix[j][i++] = s[idx++];
+    // i is rows, j is col and idx is the index in the original string
+    int i = 0, j = 0, idx = 0;
+    while (idx < lengthS) {
+        //filling the zigzag pattern (columns first)
+        for (int i = 0; i < numRows && idx < lengthS; i++) {
+            matrix[i][j] = s[idx++];
         }
 
-        idx += numRows;
+        //filling the zigzag pattern (diagonal going up)
+        for (int i = numRows - 2; i > 0 && idx < lengthS; i--) {
+            matrix[i][++j] = s[idx++];
+        }
+        j++;
     }
     
     printf("Number of rows is: %d\n", numRows);
