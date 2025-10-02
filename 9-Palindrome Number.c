@@ -23,14 +23,14 @@ bool isPalindrome(int x) {
     }
 
     return true;
-}
+} 
 
 int main() {
     int x;
     printf("Give a number: ");
     scanf("%d", &x);
 
-    bool result = isPalindrome(x); // or false
+    bool result = isPalindrome(x);
     printf("The number %d is %sa Palindrome\n", x, result ? "" : "not ");
     return 0;
 }
