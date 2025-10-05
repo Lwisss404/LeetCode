@@ -41,8 +41,7 @@ void insertHashNode(Hashnode** HashMap, int key, int index) {
 
 int searchHashMap(Hashnode** HashMap, int key) {
     int h = hash(key);
-    Hashnode* Node = malloc(sizeof(Hashnode));
-    Node = HashMap[h];
+    Hashnode* Node = HashMap[h];
     while (Node) {
         if (Node->key == key) return Node->index;
         Node = Node->next;
