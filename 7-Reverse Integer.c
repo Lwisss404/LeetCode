@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <limits.h>
-
+ 
 int reverse(int x){
 
     if (x / 10 == 0) { return x; }
