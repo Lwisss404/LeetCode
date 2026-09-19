@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+ 
 char* convert(char* s, int numRows) {
     if (numRows == 1 || strlen(s) <= 1) { return strdup(s); }
 
