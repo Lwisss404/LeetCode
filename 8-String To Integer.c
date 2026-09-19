@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-
+ 
 int myAtoi(char* s) {
     int lengthS = strlen(s);
     if (lengthS < 1) return 0;
