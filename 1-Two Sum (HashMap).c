@@ -3,7 +3,6 @@
 
 #define HASH_SIZE 1000
 
-
 typedef struct Hashnode {
     int key;
     int index;
