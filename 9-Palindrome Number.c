@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-
+ 
 bool isPalindrome(int x) {
     if (x < 0) return false;
     if (x / 10 == 0) return true;
