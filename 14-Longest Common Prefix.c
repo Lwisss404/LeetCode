@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
+ 
 char* longestCommonPrefix(char** strs, int strsSize) {
     int maxLen = strlen(strs[0]);
     char* lCP = malloc((maxLen + 1) * sizeof(char));
