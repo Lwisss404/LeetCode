@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+
 int lengthOfLongestSubstring(char *s) {
     int length = strlen(s);
     int left = 0, maxLength = 0, currLength;
