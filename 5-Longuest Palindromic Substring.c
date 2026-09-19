@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-//
+// 
 int isPalindrome(char* s, int start, int end) {
     while (start < end) {
         if (s[start] != s[end]) {
