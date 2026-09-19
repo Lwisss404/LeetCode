@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-
+ 
 void fillTable(int* T, int n) {
     for (int i = 0; i < n; i++) {
         printf("Give Number: ");
